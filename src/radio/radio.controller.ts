@@ -12,7 +12,7 @@ import { CreateRadioDto } from './dto/createRadio.dto';
 import { UpdateRadioDto } from './dto/updateRadio.dto';
 import { RadioService } from './radio.service';
 
-@Controller('radios')
+@Controller('api/radios')
 export class RadioController {
   constructor(private radioService: RadioService) {}
 
