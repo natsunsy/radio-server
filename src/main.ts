@@ -1,14 +1,19 @@
 import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import { RadioService } from './schemas/radio.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const databaseService = app.get(RadioService);
 
-  console.log('Im waiting for it -->', await databaseService.getAll());
+  const options = new DocumentBuilder()
+    .setTitle('Radio-server')
+    .setDescription('API to manage radios with MongoDB Atlas')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, options);
 
-  // app.enableCors();
+  // La ruta en que se sirve la documentación
+  SwaggerModule.setup('docs', app, document);
 
   await app.listen(process.env.PORT || 3000, '0.0.0.0');
 }
