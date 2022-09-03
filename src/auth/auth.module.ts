@@ -6,6 +6,7 @@ import { UserModule } from '../user/user.module';
 import { AuthService } from './auth.service';
 import { LocalStrategy } from './strategies/local.strategy';
 import { jwtConstants } from 'src/constants/constans.auth';
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   imports: [
@@ -13,25 +14,10 @@ import { jwtConstants } from 'src/constants/constans.auth';
     PassportModule,
     JwtModule.register({
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '360s' },
+      signOptions: { expiresIn: '3360s' },
     }),
   ],
-  providers: [AuthService, LocalStrategy],
-  exports: [AuthService, LocalStrategy],
+  providers: [AuthService, LocalStrategy, JwtStrategy],
+  exports: [AuthService],
 })
 export class AuthModule {}
-
-// @Module({
-//   imports: [
-//     UserModule,
-//     PassportModule,
-//     JwtModule.register({
-//       secret: 'secretKey',
-//       signOptions: { expiresIn: '60s' },
-//     }),
-//     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
-//   ],
-//   providers: [AuthService, UserService, LocalStrategy, JwtStrategy],
-//   controllers: [AuthController],
-//   exports: [AuthService, UserService, LocalStrategy, JwtStrategy],
-// })

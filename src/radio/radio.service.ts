@@ -25,7 +25,6 @@ export class RadioService {
     return this.radioModel
       .findByIdAndUpdate(id, req)
       .then((res) => {
-        console.log(JSON.stringify(res));
         return {
           motive: 'Success',
           message: 'Registro actualizado.',
@@ -52,7 +51,6 @@ export class RadioService {
     return this.radioModel
       .findByIdAndDelete(req)
       .then((res) => {
-        console.log(JSON.stringify(res));
         return {
           motive: 'Success',
           message: 'Registro eliminado.',
@@ -79,7 +77,6 @@ export class RadioService {
     return this.radioModel
       .create(req)
       .then((res) => {
-        console.log(JSON.stringify(res));
         return {
           motive: 'Success',
           message: 'Registro creado.',

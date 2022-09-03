@@ -1,38 +1,27 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { User, UserDocument } from './user.schema';
+import { UserDocument } from './user.schema';
 import { Response } from '../constants/constants.types';
 
 @Injectable()
 export class UserService {
   constructor(
-    @InjectModel(User.name)
+    @InjectModel('users')
     private userModel: Model<UserDocument>,
   ) {}
 
-  async getUserByEmail(email: any): Promise<User> {
-    console.log('email is r not an object?', email);
-    return this.userModel.findOne(email);
+  async getUserByUsername(username: any): Promise<any> {
+    return this.userModel.findOne({ username: username });
   }
 
-  // async findOne(email: string): Promise<User | undefined> {
-  //   return this.userModel.find((user) => user.email === email);
-  // }
-
-  async createUser(
-    email: string,
-    password: string,
-    name: string,
-  ): Promise<Response> {
+  async createUser(username: string, password: string): Promise<Response> {
     return this.userModel
       .create({
-        email,
+        username,
         password,
-        name,
       })
       .then((res) => {
-        console.log(JSON.stringify(res));
         return {
           motive: 'Success',
           message: 'Usuario creado.',

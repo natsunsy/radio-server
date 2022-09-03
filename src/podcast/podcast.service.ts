@@ -25,7 +25,6 @@ export class PodcastService {
     return this.podcastModel
       .findByIdAndUpdate(id, req)
       .then((res) => {
-        console.log(JSON.stringify(res));
         return {
           motive: 'Success',
           message: 'Registro actualizado.',
@@ -36,7 +35,6 @@ export class PodcastService {
         };
       })
       .catch((err) => {
-        console.error(err);
         return {
           motive: 'Error',
           message: 'Ocurrio un error inesperado.',
@@ -52,7 +50,6 @@ export class PodcastService {
     return this.podcastModel
       .findByIdAndDelete(req)
       .then((res) => {
-        console.log(JSON.stringify(res));
         return {
           motive: 'Success',
           message: 'Registro eliminado.',
@@ -79,7 +76,6 @@ export class PodcastService {
     return this.podcastModel
       .create(req)
       .then((res) => {
-        console.log(JSON.stringify(res));
         return {
           motive: 'Success',
           message: 'Registro creado.',
