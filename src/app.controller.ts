@@ -12,7 +12,6 @@ import { LocalAuthGuard } from './auth/guards/local-auth.guard';
 import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from './user/dto/createUser.dto';
 import { UserService } from './user/user.service';
-import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 
 @Controller()
 export class AppController {
@@ -39,7 +38,7 @@ export class AppController {
     return result;
   }
 
-  @UseGuards(JwtAuthGuard)
+  // Test Endpoint
   @Get()
   getHello(): string {
     return this.appService.getHello();

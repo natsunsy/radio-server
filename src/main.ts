@@ -10,11 +10,12 @@ async function bootstrap() {
     .setDescription('API to manage radios with MongoDB Atlas')
     .setVersion('1.0')
     .build();
+
   const document = SwaggerModule.createDocument(app, options);
 
-  // La ruta en que se sirve la documentación
+  // Documentation Route
   SwaggerModule.setup('docs', app, document);
 
-  await app.listen(process.env.PORT || 3000, '0.0.0.0');
+  await app.listen(3000);
 }
 bootstrap();

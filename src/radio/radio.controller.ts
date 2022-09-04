@@ -7,7 +7,9 @@ import {
   Param,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { CreateRadioDto } from './dto/createRadio.dto';
 import { UpdateRadioDto } from './dto/updateRadio.dto';
 import { RadioService } from './radio.service';
@@ -16,6 +18,7 @@ import { RadioService } from './radio.service';
 export class RadioController {
   constructor(private radioService: RadioService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
   async createRadio(@Body() request: CreateRadioDto) {
     try {
@@ -25,6 +28,7 @@ export class RadioController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   async getRadioById(@Param('id') id: string) {
     try {
@@ -34,6 +38,7 @@ export class RadioController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   async getAllRadios() {
     try {
@@ -43,6 +48,7 @@ export class RadioController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put(':id')
   async updateRadio(@Param('id') id: string, @Body() request: UpdateRadioDto) {
     try {
@@ -52,6 +58,7 @@ export class RadioController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   async removeRadio(@Param('id') id: string) {
     try {

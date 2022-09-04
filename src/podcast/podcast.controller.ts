@@ -18,7 +18,7 @@ import { PodcastService } from './podcast.service';
 export class PodcastController {
   constructor(private podcastService: PodcastService) {}
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Post()
   async createPodcast(@Body() request: CreatePodcastDto) {
     try {
@@ -28,7 +28,7 @@ export class PodcastController {
     }
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   async getPodcastById(@Param('id') id: string) {
     try {
@@ -38,7 +38,7 @@ export class PodcastController {
     }
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get()
   async getAllPodcasts() {
     try {
@@ -48,7 +48,7 @@ export class PodcastController {
     }
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Put(':id')
   async updatePodcast(
     @Param('id') id: string,
@@ -61,7 +61,7 @@ export class PodcastController {
     }
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   async removePodcast(@Param('id') id: string) {
     try {
