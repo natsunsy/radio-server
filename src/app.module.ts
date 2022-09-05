@@ -16,7 +16,7 @@ import { PodcastModule } from './podcast/podcast.module';
     }),
     MongooseModule.forRootAsync({
       useFactory: () => ({
-        uri: process.env.MONGO_ATLAS_CONNECTION,
+        uri: process.env.MONGODB_URI,
         useNewUrlParser: true,
         useUnifiedTopology: true,
       }),
