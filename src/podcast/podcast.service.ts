@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Response } from '../constants/constants.types';
 import { CreatePodcastDto } from './dto/createPodcast.dto';
 import { UpdatePodcastDto } from './dto/updatePodcast.dto';
 import { Podcast, PodcastDocument } from './podcast.schema';
@@ -98,3 +97,15 @@ export class PodcastService {
       });
   }
 }
+
+export type Response = {
+  motive: string;
+  message: string;
+  statusCode: number;
+  extra?: Extra;
+};
+
+export type Extra = {
+  data?: any;
+  err?: string;
+};
