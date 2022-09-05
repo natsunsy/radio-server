@@ -14,7 +14,13 @@ import { PodcastModule } from './podcast/podcast.module';
       isGlobal: true,
       envFilePath: ['.env.development.local'],
     }),
-    MongooseModule.forRoot(process.env.MONGO_ATLAS_CONNECTION),
+    MongooseModule.forRootAsync({
+      useFactory: () => ({
+        uri: process.env.MONGO_ATLAS_CONNECTION,
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }),
+    }),
     AuthModule,
     UserModule,
     RadioModule,
