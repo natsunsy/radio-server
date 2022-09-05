@@ -1,7 +1,7 @@
 {
     "version": 2,
     "env": {
-        "MONGO_ATLAS_CONNECTION": "@mongo_atlas_connection_uri"
+        "MONGO_ATLAS_CONNECTION": "mongo_atlas_connection_uri"
     },
     "builds": [
         {
